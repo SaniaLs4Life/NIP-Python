@@ -1,19 +1,27 @@
 import numpy as np
 
-def function(nip,weight):
-    multiplied = 0
-    sum = 0
-    remainder = 0
+def function(nip):
     if(len(nip) == 13):
-        for i in nip:
-            a = np.array([nip])
-            b = np.array([6,5,7,2,3,4,5,6,7])
-            np.multiply(a,b)
-            multiplied = nip * weight
-        print()
-        return True
+        result = True
     else:
-        return False
+        result = False
+    if(result):
+        newNip = nip.replace("-", "")
+        weight = {6, 5, 7, 2, 3, 4, 5, 6, 7}
+        lastDigit = newNip[-1]
+        for i in int(range(newNip)):
+            num = newNip[i]
+            w = weight[i]
+
+            total = num * w
+            sum += total
+        remainder = sum % 11
+        if(remainder == lastDigit):
+            result = True
+        else:
+            result = False
+    return result
+
 
     # remainder = sum % 11
     # if(remainder ==  ):
@@ -23,9 +31,8 @@ def function(nip,weight):
 #1,2,3,4,5,6,7,8,9,1
 
 def main():
-    nip = str(input("Enter xxx-xxx-xx-xx: "))
-    weight = str({6,5,7,2,3,4,5,6,7})
-    print(function(nip,weight))
+    nip = input("Enter xxx-xxx-xx-xx: ")
+    print(function(nip))
 
 if __name__ == '__main__':
     main()
